@@ -1,29 +1,3 @@
-<!-- <header>
-  <div>test123</div>
-
-  <div class="header-element title">
-    <a
-      routerLink="tasks"
-    >
-    </a>
-  </div>
-  <button class="header-element" mat-button routerLink="tasks">Доступні завдання</button>
-  <button class="header-element" mat-button routerLink="marks">Оцінки</button>
-  <button class="header-element" mat-button routerLink="statistics">Статистика</button>
-
-  <div class="header-element login">
-    <span>Святослав Бачинський</span>
-    <svg
-      class="MuiSvgIcon-root"
-      focusable="false"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
-    </svg>
-  </div>
-</header> -->
-
 <div class='header'>
   <div class='title header-element'>
     Віртуальна лабораторія
@@ -37,7 +11,7 @@
 
   <div class='login header-element'>
     <div>Святослав Бачинський</div>
-    <button class='login-dropdown-btn' mat-mini-fab aria-label="Example icon button with a menu icon">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="shitass">
       <svg
         class="MuiSvgIcon-root"
         focusable="false"
@@ -47,5 +21,15 @@
         <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
       </svg>
     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        <span>Налаштування</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Вийти</span>
+      </button>
+    </mat-menu>
   </div>
 </div>
