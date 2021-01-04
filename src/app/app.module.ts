@@ -9,6 +9,7 @@ import { MarksComponent } from './components/marks/marks.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialsModule } from './materials.module';
+import { TaskComponent } from './components/tasks/task/task.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MaterialsModule } from './materials.module';
     HeaderComponent,
     TasksComponent,
     MarksComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
