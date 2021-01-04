@@ -7,6 +7,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { MarksComponent } from './components/marks/marks.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialsModule } from './materials.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

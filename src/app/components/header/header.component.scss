@@ -1,51 +1,106 @@
-header {
-    display: flex;
+// header {
+//     display: flex;
+//     align-items: center;
+//     width: 100%;
+//     height: 48px;
+//     background-color: #292B3F;
+
+//     .title {
+//         margin-left: 14vmin;
+//         font-size: 18px;
+//         font-weight: bolder;
+//     }
+
+//     .header-elements {
+//         display: flex;
+//         // width: 64vmin;
+//         // justify-content: space-around;
+//         // margin-left: 14vmin;
+//     }
+
+//     .header-element {
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         font-size: 16px;
+//     }
+
+//     .login {
+//         margin-left: auto;
+//         margin-right: 14vmin;
+
+//         .MuiButton-iconSizeMedium > *:first-child {
+//             font-size: 20px;
+//         }
+
+//         .MuiSvgIcon-root {
+//             fill: currentColor;
+//             width: 1em;
+//             height: 1em;
+//             display: inline-block;
+//             font-size: 1.5rem;
+//             transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+//             flex-shrink: 0;
+//             user-select: none;
+//         }
+//     }
+// }
+
+// a, span, svg, path {
+//     color: #fff;
+// }
+
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  background-color: #292B3F;
+  color: white;
+  padding: 0 2.5%;
+
+  .header-element {
+    height: 100%;
     align-items: center;
-    width: 100vw;
-    height: 46px;
-    background-color: #292B3F;
+    display: flex;
+    justify-self: stretch;
+    flex-grow: 1;
+    justify-content: center;
 
-    .title {
-        margin-left: 14vmin;
-        font-size: 18px;
-        font-weight: bolder;
+    .MuiSvgIcon-root {
+      fill: currentColor;
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+      font-size: 1.5rem;
+      transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      flex-shrink: 0;
+      user-select: none;
     }
+  }
 
-    .header-elements {
-        display: flex;
-        width: 64vmin;
-        justify-content: space-around;
-        margin-left: 14vmin;
-    }
+  .title {
+    font-size: 18px;
+    font-weight: bolder;
+  }
 
-    .header-element {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 16px;
-    }
+  .tabs {
+    font-size: 14px;
+    flex-grow: 3;
+    padding: 0 0 0 16px;
+    justify-content: flex-start;
 
-    .login {
-        margin-left: auto;
-        margin-right: 14vmin;
-        
-        .MuiButton-iconSizeMedium > *:first-child {
-            font-size: 20px;
-        }
-        
-        .MuiSvgIcon-root {
-            fill: currentColor;
-            width: 1em;
-            height: 1em;
-            display: inline-block;
-            font-size: 1.5rem;
-            transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            flex-shrink: 0;
-            user-select: none;
-        }
+    button {
+      padding: 0 16px;
+      height: 100%;
+      border-radius: 0;
     }
+  }
+
+  .login .login-dropdown-btn {
+    background-color: none;
+  }
 }
 
-a, span, svg, path {
-    color: #fff;
-}

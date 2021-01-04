@@ -1,16 +1,15 @@
-<header>
+<!-- <header>
+  <div>test123</div>
+
   <div class="header-element title">
     <a
       routerLink="tasks"
     >
     </a>
   </div>
-
-  <div class="header-elements">
-    <a class="header-element" routerLink="tasks">Доступні завдання</a>
-    <a class="header-element" routerLink="marks">Оцінки</a>
-    <a class="header-element" routerLink="statistics">Статистика</a>
-  </div>
+  <button class="header-element" mat-button routerLink="tasks">Доступні завдання</button>
+  <button class="header-element" mat-button routerLink="marks">Оцінки</button>
+  <button class="header-element" mat-button routerLink="statistics">Статистика</button>
 
   <div class="header-element login">
     <span>Святослав Бачинський</span>
@@ -23,4 +22,30 @@
       <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
     </svg>
   </div>
-</header>
+</header> -->
+
+<div class='header'>
+  <div class='title header-element'>
+    Віртуальна лабораторія
+  </div>
+
+  <div class='tabs header-element'>
+    <button class="header-btn" mat-button routerLink="tasks">Доступні завдання</button>
+    <button class="header-btn" mat-button routerLink="marks">Оцінки</button>
+    <button class="header-btn" mat-button routerLink="statistics">Статистика</button>
+  </div>
+
+  <div class='login header-element'>
+    <div>Святослав Бачинський</div>
+    <button class='login-dropdown-btn' mat-mini-fab aria-label="Example icon button with a menu icon">
+      <svg
+        class="MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
+      </svg>
+    </button>
+  </div>
+</div>
