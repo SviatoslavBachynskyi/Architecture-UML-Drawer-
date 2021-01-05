@@ -1,4 +1,4 @@
-<p style="margin-left: 40%; text-transform: uppercase">доступні завдання</p>
+<app-page-title value="доступні завдання"></app-page-title>
 
 <div class="tasks">
   <div *ngFor="let task of tasks">
@@ -14,5 +14,12 @@
   </div>
 </div>
 <div class="i-like-pagination">
-  <ngb-pagination [collectionSize]="tasks.length" [page]="1" [maxSize]="100" [rotate]="false" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+  <ngb-pagination
+    [collectionSize]="tasks.length"
+    [page]="1"
+    [maxSize]="100"
+    [rotate]="false"
+    [ellipses]="false"
+    [boundaryLinks]="true"
+  ></ngb-pagination>
 </div>

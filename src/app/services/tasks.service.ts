@@ -17,7 +17,7 @@ export class TasksService {
     return JSON.parse(tasksString);
   }
 
-  addTasks(newTask: Task): void {
+  addTask(newTask: Task): void {
     const tasksString = localStorage.getItem(this.key);
     const tasks = JSON.parse(tasksString) as Task[];
     tasks.push(newTask);
