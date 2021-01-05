@@ -28,8 +28,8 @@
       </div>
     </div>
     <div class='charts row'>
-      <div class='placeholder-chart'>hi</div>
-      <div class='placeholder-chart'>hi</div>
+      <plotly-plot [data]="taskMarksChart.data" [layout]="taskMarksChart.layout"></plotly-plot>
+      <plotly-plot [data]="taskTimeChart.data" [layout]="taskTimeChart.layout"></plotly-plot>
     </div>
   </div>
 </div>
