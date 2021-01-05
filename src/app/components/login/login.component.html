@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h2>Авторизація</h2>
+      <mat-error *ngIf="loginInvalid">
+        Логін та/або пароль введено неправильно
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          placeholder="Логін"
+          formControlName="username"
+          required
+        />
+        <mat-error> Логін не може бути порожнім </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="password"
+          placeholder="Пароль"
+          formControlName="password"
+          required
+        />
+        <mat-error> Пароль не може бути порожнім </mat-error>
+      </mat-form-field>
+      <button id="loginBtn" mat-raised-button color="primary">Увійти</button>
+    </form>
+  </mat-card-content>
+</mat-card>
