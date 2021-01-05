@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "Architecture-UML-Drawer"
+  "defaultProject": "Architecture-UML-Drawer",
+  "cli": {
+    "analytics": false
+  }
 }

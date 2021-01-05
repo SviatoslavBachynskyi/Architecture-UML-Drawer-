@@ -10,6 +10,7 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialsModule } from './materials.module';
 import { TaskComponent } from './components/tasks/task/task.component';
+import { PageTitleComponent } from './page-title/page-title.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,14 @@ import { TaskComponent } from './components/tasks/task/task.component';
     TasksComponent,
     MarksComponent,
     StatisticsComponent,
-    TaskComponent
+    TaskComponent,
+    PageTitleComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialsModule
+    MaterialsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
