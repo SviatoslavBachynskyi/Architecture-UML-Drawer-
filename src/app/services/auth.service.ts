@@ -33,7 +33,7 @@ export class AuthService {
   addUser(newUser: User): boolean {
     const usersString = localStorage.getItem(this.allUsersKey);
     const users = JSON.parse(usersString) as User[];
-    if (users.indexOf(newUser) >= 0) {
+    if (!!users.find(x => x.username === newUser.username)) {
       return false;
     }
 

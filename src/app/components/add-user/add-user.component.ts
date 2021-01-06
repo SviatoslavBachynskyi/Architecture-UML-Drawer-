@@ -31,6 +31,7 @@ export class AddUserComponent implements OnInit {
       const fullname = this.form.get('fullname').value;
       const username = this.form.get('username').value;
       const password = this.form.get('password').value;
+
       if (this.authService.addUser({ username, password, fullname })) {
         alert('Нового користувача успішно додано');
         this.form.reset();
