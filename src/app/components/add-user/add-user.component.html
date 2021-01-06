@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h2>Додавання нового користувача</h2>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          placeholder="Ім'я"
+          formControlName="fullname"
+          required
+        />
+        <mat-error> Ім'я не може бути порожнім </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          placeholder="Логін"
+          formControlName="username"
+          required
+        />
+        <mat-error> Логін не може бути порожнім </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="password"
+          placeholder="Пароль"
+          formControlName="password"
+          required
+        />
+        <mat-error> Пароль не може бути порожнім </mat-error>
+      </mat-form-field>
+      <button id="addBtn" mat-raised-button color="primary">Додати</button>
+    </form>
+  </mat-card-content>
+</mat-card>

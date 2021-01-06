@@ -6,13 +6,19 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
 import { TasksComponent } from './components/tasks/tasks.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AdminAuthGuardService } from './services/admin-auth-guard.service';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'tasks',
     pathMatch: 'full',
     canActivate: [],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'tasks',
@@ -30,8 +36,13 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: 'add-student',
+    component: AddUserComponent,
+    canActivate: [AuthGuardService, AdminAuthGuardService],
+  },
+  {
+    path: '**',
+    redirectTo: 'tasks',
   },
 ];
 

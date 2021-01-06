@@ -18,6 +18,7 @@ import { MaterialsModule } from './materials.module';
 import { TaskComponent } from './components/tasks/task/task.component';
 import { PageTitleComponent } from './page-title/page-title.component';
 import { LoginComponent } from './components/login/login.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -31,6 +32,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     TaskComponent,
     PageTitleComponent,
     LoginComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,

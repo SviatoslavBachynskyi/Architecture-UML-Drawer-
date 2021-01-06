@@ -29,6 +29,14 @@
       </svg>
     </button>
     <mat-menu #menu="matMenu">
+      <button
+        *ngIf="authService.isUserAdmin()"
+        (click)="onAddStudent()"
+        mat-menu-item
+      >
+        <mat-icon>person_add</mat-icon>
+        <span>Додати студента</span>
+      </button>
       <button mat-menu-item>
         <mat-icon>settings</mat-icon>
         <span>Налаштування</span>

@@ -15,8 +15,9 @@ export class AuthService {
   constructor(public router: Router) {
     this.ensureUsersSeeded();
     const currentUserString = localStorage.getItem(this.currentUserKey);
-    const currentUser =
-      currentUserString.length === 0 ? null : JSON.parse(currentUserString);
+    const currentUser = !!currentUserString
+      ? null
+      : JSON.parse(currentUserString);
     this.currentUser.next(currentUser);
   }
 
@@ -29,12 +30,23 @@ export class AuthService {
     return JSON.parse(tasksString);
   }
 
-  addUser(newUser: User): void {
+  addUser(newUser: User): boolean {
     const usersString = localStorage.getItem(this.allUsersKey);
     const users = JSON.parse(usersString) as User[];
-    users.push(newUser);
+    if (users.indexOf(newUser) >= 0) {
+      return false;
+    }
 
-    localStorage.setItem(this.allUsersKey, JSON.stringify(newUser));
+    users.push(newUser);
+    localStorage.setItem(this.allUsersKey, JSON.stringify(users));
+
+    return true;
+  }
+
+  isUserAdmin(): boolean {
+    return (
+      !!this.currentUser.value && this.currentUser.value.username === 'admin'
+    );
   }
 
   isAuthenticated(): boolean {
