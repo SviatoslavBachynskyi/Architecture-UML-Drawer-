@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { User, UsersSeededData } from '../models/user.model';
 
@@ -6,11 +8,20 @@ import { User, UsersSeededData } from '../models/user.model';
   providedIn: 'root',
 })
 export class AuthService {
+  private currentUser = new BehaviorSubject<User>(null);
   allUsersKey = 'users';
   currentUserKey = 'currentUser';
 
-  constructor() {
+  constructor(public router: Router) {
     this.ensureUsersSeeded();
+    const currentUserString = localStorage.getItem(this.currentUserKey);
+    const currentUser =
+      currentUserString.length === 0 ? null : JSON.parse(currentUserString);
+    this.currentUser.next(currentUser);
+  }
+
+  getCurrentUser(): Observable<User> {
+    return this.currentUser.asObservable();
   }
 
   getUsers(): User[] {
@@ -36,13 +47,20 @@ export class AuthService {
       (x) => x.username === username && x.password === password
     );
 
-    localStorage.setItem(this.currentUserKey, JSON.stringify(currentUser));
+    const loginSuccessful = !!currentUser;
+    if (loginSuccessful) {
+      localStorage.setItem(this.currentUserKey, JSON.stringify(currentUser));
+      this.currentUser.next(currentUser);
+      this.router.navigate(['tasks']).then();
+    }
 
-    return !!currentUser;
+    return loginSuccessful;
   }
 
   logout(): void {
     localStorage.setItem(this.currentUserKey, '');
+    this.currentUser.next(null);
+    this.router.navigate(['login']).then();
   }
 
   private ensureUsersSeeded(): void {

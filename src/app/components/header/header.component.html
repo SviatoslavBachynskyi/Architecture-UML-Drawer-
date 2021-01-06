@@ -1,16 +1,21 @@
-<div class='header'>
-  <div class='title header-element'>
-    Віртуальна лабораторія
-  </div>
+<div class="header">
+  <div class="title header-element">Віртуальна лабораторія</div>
 
-  <div class='tabs header-element'>
-    <button class="header-btn" mat-button routerLink="tasks">Доступні завдання</button>
+  <div class="tabs header-element">
+    <button class="header-btn" mat-button routerLink="tasks">
+      Доступні завдання
+    </button>
     <button class="header-btn" mat-button routerLink="marks">Оцінки</button>
-    <button class="header-btn" mat-button routerLink="statistics">Статистика</button>
+    <button class="header-btn" mat-button routerLink="statistics">
+      Статистика
+    </button>
   </div>
 
-  <div class='login header-element'>
-    <div>Святослав Бачинський</div>
+  <div
+    *ngIf="!!currentUser; else notAuthenticated"
+    class="login header-element"
+  >
+    <div>{{ currentUser.fullname }}</div>
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="shitass">
       <svg
         class="MuiSvgIcon-root"
@@ -18,7 +23,9 @@
         viewBox="0 0 24 24"
         aria-hidden="true"
       >
-        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
+        <path
+          d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+        ></path>
       </svg>
     </button>
     <mat-menu #menu="matMenu">
@@ -32,4 +39,7 @@
       </button>
     </mat-menu>
   </div>
+  <ng-template #notAuthenticated>
+    <div class="login header-element">Авторизація не пройдена</div>
+  </ng-template>
 </div>
