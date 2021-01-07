@@ -15,8 +15,8 @@ export class MarksComponent implements OnInit {
   ngOnInit(): void {
     //let fst : Mark =;
     this.marks = [
-      { task: "Фабричний метод", timeSpent: new Date(0, 0, 0, 0, 15, 48), value: 4, dateCompleted: new Date("2020/12/25"), attemptNumber: 1, },
-      { task: "Фабричний метод", value: 5, timeSpent: new Date(0, 0, 0, 0, 10, 35), dateCompleted: new Date("2020/12/24"), attemptNumber: 2, },
+      { task: "Фабричний метод", value: 5, timeSpent: new Date(0, 0, 0, 0, 10, 35), dateCompleted: new Date("2020/12/25"), attemptNumber: 2, },
+      { task: "Фабричний метод", timeSpent: new Date(0, 0, 0, 0, 15, 48), value: 4, dateCompleted: new Date("2020/12/24"), attemptNumber: 1, },
     ];
   }
 
