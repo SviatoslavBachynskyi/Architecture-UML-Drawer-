@@ -1,4 +1,4 @@
-import { Mark } from './../../models/mark';
+import { Mark } from '../../models/mark.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
