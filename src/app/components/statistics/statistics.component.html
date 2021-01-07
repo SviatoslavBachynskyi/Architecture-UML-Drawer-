@@ -4,7 +4,7 @@
     <div class='numbers row'>
       <div class='number-stat'>
         <div class='number blue'>
-          00:04:20
+          {{ averageTimeFormatted }}
         </div>
         <div class='desc'>
           Середній час на виконання завдання
@@ -12,7 +12,7 @@
       </div>
       <div class='number-stat'>
         <div class='number green'>
-          4,9
+          {{ userStats.averageMark.toFixed(1) }}
         </div>
         <div class='desc'>
           Середня оцінка
@@ -20,7 +20,7 @@
       </div>
       <div class='number-stat'>
         <div class='number blue'>
-          27
+          {{ userStats.tasksCompletedLastWeek }}
         </div>
         <div class='desc'>
           Виконаних завдань за останній тиждень
@@ -28,8 +28,8 @@
       </div>
     </div>
     <div class='charts row'>
-      <plotly-plot [data]="taskMarksChart.data" [layout]="taskMarksChart.layout"></plotly-plot>
-      <plotly-plot [data]="taskTimeChart.data" [layout]="taskTimeChart.layout"></plotly-plot>
+      <plotly-plot [data]="taskMarksChart.data" [layout]="taskMarksChart.layout" [config]="plotConfig"></plotly-plot>
+      <plotly-plot [data]="taskTimeChart.data" [layout]="taskTimeChart.layout" [config]="plotConfig"></plotly-plot>
     </div>
   </div>
 </div>

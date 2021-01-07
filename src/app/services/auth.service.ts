@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { User, UsersSeededData } from '../models/user.model';
+import { User, UsersSeededData } from '../models/data/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +16,8 @@ export class AuthService {
     this.ensureUsersSeeded();
     const currentUserString = localStorage.getItem(this.currentUserKey);
     const currentUser = !!currentUserString
-      ? null
-      : JSON.parse(currentUserString);
+      ? JSON.parse(currentUserString)
+      : null;
     this.currentUser.next(currentUser);
   }
 
@@ -63,6 +63,7 @@ export class AuthService {
     if (loginSuccessful) {
       localStorage.setItem(this.currentUserKey, JSON.stringify(currentUser));
       this.currentUser.next(currentUser);
+      console.log(`fired ${currentUser.username}`);
       this.router.navigate(['tasks']).then();
     }
 

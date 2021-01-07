@@ -1,7 +1,6 @@
-import { Time } from "@angular/common";
-
 export class Mark{
     task?: string;
+    taskId?: number;
     value?: number;
     dateCompleted?: Date;
     timeSpent?: Date;
