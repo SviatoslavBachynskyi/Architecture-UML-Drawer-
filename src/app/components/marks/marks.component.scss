@@ -1,3 +1,11 @@
 mat-header-cell{
     text-transform: uppercase;
+    color: #9BA1AD;
+    font-weight: 500;
+}
+
+mat-cell, mat-header-cell{
+    font-size: 20px;
+    font-family: 'Segoe UI';
+    font-weight: 400;
 }

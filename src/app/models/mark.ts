@@ -4,6 +4,6 @@ export class Mark{
     task?: string;
     value?: number;
     dateCompleted?: Date;
-    //timeSpent: Time;
+    timeSpent?: Date;
     attemptNumber?: number;
 }
