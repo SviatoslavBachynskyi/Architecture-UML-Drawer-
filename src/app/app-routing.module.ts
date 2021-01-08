@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { ExecuteTaskComponent } from './components/execute-task/execute-task.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,11 @@ const routes: Routes = [
     path: 'add-student',
     component: AddUserComponent,
     canActivate: [AuthGuardService, AdminAuthGuardService],
+  },
+  {
+    path: 'execute-task',
+    component: ExecuteTaskComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: '**',

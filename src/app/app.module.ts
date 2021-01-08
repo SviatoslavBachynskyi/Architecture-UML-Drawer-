@@ -16,9 +16,10 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialsModule } from './materials.module';
 import { TaskComponent } from './components/tasks/task/task.component';
-import { PageTitleComponent } from './page-title/page-title.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 import { LoginComponent } from './components/login/login.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { ExecuteTaskComponent } from './components/execute-task/execute-task.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -33,6 +34,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     PageTitleComponent,
     LoginComponent,
     AddUserComponent,
+    ExecuteTaskComponent,
   ],
   imports: [
     BrowserModule,

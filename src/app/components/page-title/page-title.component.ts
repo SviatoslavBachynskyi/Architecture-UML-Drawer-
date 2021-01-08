@@ -9,8 +9,8 @@ export class PageTitleComponent implements OnInit {
 
   constructor() { }
 
-  @Input() 
-  value : string;
+  @Input()
+  value: string;
 
   ngOnInit(): void {
   }

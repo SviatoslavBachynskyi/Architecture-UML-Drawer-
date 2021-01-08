@@ -55,7 +55,6 @@ export class StatisticsComponent implements OnInit {
 
   ngOnInit(): void {
     this.statsService.getUserStatistics().subscribe(stats => {
-      console.log(stats);
       if (!stats) { return; }
 
       this.userStats = stats;
