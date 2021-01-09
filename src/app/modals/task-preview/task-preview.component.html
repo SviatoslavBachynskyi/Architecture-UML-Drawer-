@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="content">
+        <app-page-title [value]="taskPreview.title"> </app-page-title>
+        <div>
+            <div class="image-wrapper">
+                <img [alt]="taskPreview.title"  [src]="imageUrlSanitized">
+            </div>
+            <div style="margin: 20px 0px;">{{taskPreview.description}}</div>
+            <div class="field">
+                <div class="label">Тип: </div>
+                <div class="data">{{taskPreview.type}}</div>
+            </div>
+            <div class="field">
+                <div class="label">Складність: </div>
+                <div class="data">{{taskPreview.level}}</div>
+            </div>
+            <div class="field">
+                <div class="label">Поточна оцінка: </div>
+                <div class="data">{{taskPreview.currentMark}}</div>
+            </div>
+            <div class="field">
+                <div class="label">Найкращий час виконання: </div>
+                <div class="data">{{taskPreview.bestExecutionTime | date : 'HH:mm:ss'}}</div>
+            </div>
+            <mat-table [dataSource]="taskPreview.marks" *ngIf="taskPreview.marks">
+                <ng-container matColumnDef="attemptNumber">
+                    <mat-header-cell *matHeaderCellDef> Номер Спроби </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> #{{row.attemptNumber}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="value">
+                    <mat-header-cell *matHeaderCellDef> Оцінка </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.value}} / 5</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="dateCompleted">
+                    <mat-header-cell *matHeaderCellDef> Дата Здачі </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.dateCompleted | date : 'dd.MM.YYYY'}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="timeSpent">
+                    <mat-header-cell *matHeaderCellDef> Витрачено часу </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.timeSpent | date : 'HH:mm:ss'}} </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="['attemptNumber', 'value', 'dateCompleted', 'timeSpent']">
+                </mat-header-row>
+                <mat-row *matRowDef="let row; columns: ['attemptNumber', 'value', 'dateCompleted', 'timeSpent']">
+                </mat-row>
+            </mat-table>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button class="action" mat-raised-button (click)="closeModal()">Скасувати</button>
+        <button class="action" mat-raised-button color="primary" (click)="closeModal()">Почати виконання</button>
+    </div>
+</div>

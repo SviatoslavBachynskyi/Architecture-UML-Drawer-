@@ -20,6 +20,7 @@ import { PageTitleComponent } from './components/page-title/page-title.component
 import { LoginComponent } from './components/login/login.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { ExecuteTaskComponent } from './components/execute-task/execute-task.component';
+import { TaskPreviewComponent } from './modals/task-preview/task-preview.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -35,6 +36,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     LoginComponent,
     AddUserComponent,
     ExecuteTaskComponent,
+    TaskPreviewComponent,
   ],
   imports: [
     BrowserModule,
