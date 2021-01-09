@@ -11,7 +11,7 @@ import { TaskPreview } from 'src/app/models/taskPreview.model';
 })
 export class TaskPreviewComponent implements OnInit {
 
-  private imageUrlSanitized:SafeUrl;
+  public imageUrlSanitized:SafeUrl;
 
   constructor(public dialogRef: MatDialogRef<TaskPreviewComponent>,
     @Inject(MAT_DIALOG_DATA) public taskPreview: TaskPreview,
