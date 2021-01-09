@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExecuteTaskComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    window.addEventListener('message', (msg) => {
+      console.log(msg);
+      console.log(msg.data.diagramObjects);
+    }, false);
+  }
 
   ngOnInit(): void {
     setTimeout(() => {
