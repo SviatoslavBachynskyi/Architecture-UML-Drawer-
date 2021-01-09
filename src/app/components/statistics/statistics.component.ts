@@ -4,6 +4,7 @@ import { UserStatistics } from 'src/app/models/userStatistics.model';
 import { StatsService } from 'src/app/services/stats.service';
 
 const chartSize = 386;
+const numOfTasksToShowOnChart = 5;
 
 @Component({
   selector: 'app-statistics',
@@ -15,12 +16,10 @@ export class StatisticsComponent implements OnInit {
     averageCompletionTime: 0,
     averageMark: 0,
     tasksCompletedLastWeek: 0,
-    taskNames: [],
     taskMarks: [],
     taskTimes: []
   };
 
-  numOfTasksToShowOnChart = 5;
 
   taskMarksChart = {
     data: [
@@ -59,8 +58,15 @@ export class StatisticsComponent implements OnInit {
 
       this.userStats = stats;
 
-      this.updateMarksChart(stats.taskNames.slice(-this.numOfTasksToShowOnChart), stats.taskMarks.slice(-this.numOfTasksToShowOnChart));
-      this.updateTimesChart(stats.taskNames.slice(-this.numOfTasksToShowOnChart), stats.taskTimes.slice(-this.numOfTasksToShowOnChart));
+      this.updateMarksChart(
+        stats.taskMarks.map(t => t.taskName).slice(-numOfTasksToShowOnChart),
+        stats.taskMarks.map(t => t.value).slice(-numOfTasksToShowOnChart)
+      );
+
+      this.updateTimesChart(
+        stats.taskTimes.map(t => t.taskName).slice(-numOfTasksToShowOnChart),
+        stats.taskTimes.map(t => t.value).slice(-numOfTasksToShowOnChart)
+      );
     });
   }
 

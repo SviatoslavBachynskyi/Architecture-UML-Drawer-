@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
-import { UserStatistics } from '../models/userStatistics.model';
+import { TaskChartPair, UserStatistics } from '../models/userStatistics.model';
 import { AuthService } from './auth.service';
 import { TasksService } from './tasks.service';
 import { map } from 'rxjs/operators';
@@ -24,19 +24,33 @@ export class StatsService {
           .sort((a, b) => moment(a.dateCompleted).diff(moment(b.dateCompleted)));
         const completedTasks = this.tasksService.getUserCompletedTasks(user.username);
 
+        const tasks = this.tasksService.getTasksById(completedTasks.map(ct => ct.taskId));
+
         if (userMarks.length <= 0) {
           return null;
         }
 
-        const taskMarks = userMarks.map(m => m.value);
-        const taskTimes = userMarks.map(m => Math.floor(m.timeSpent.getTime() / 1000));
-        const taskNames = userMarks.map(m => m.attemptNumber === 1 ? m.task : `${m.task} (спроба ${m.attemptNumber})`);
+        const taskMarks: TaskChartPair[] = [];
+        const taskTimes: TaskChartPair[] = [];
+
+        tasks.forEach(t => {
+          const completions = completedTasks.filter(ct => ct.taskId === t.id);
+
+          const taskName = t.title.length < 12 ?
+            t.title
+            : `${t.title.substr(0, 12)}...`;
+
+          const highestMark = completions.reduce((max, ct) => max.mark > ct.mark ? max : ct);
+          const bestTime = completions.reduce((best, ct) => best.elapsedSeconds < ct.elapsedSeconds ? best : ct);
+
+          taskMarks.push({taskName, value: highestMark.mark});
+          taskTimes.push({taskName, value: bestTime.elapsedSeconds});
+        });
 
         return {
-          averageCompletionTime: taskTimes.reduce((a, b) => a + b) / completedTasks.length,
-          averageMark: taskMarks.reduce((a, b) => a + b) / completedTasks.length,
+          averageCompletionTime: taskTimes.map(tt => tt.value).reduce((a, b) => a + b) / taskTimes.length,
+          averageMark: taskMarks.map(tm => tm.value).reduce((a, b) => a + b) / taskMarks.length,
           tasksCompletedLastWeek: completedTasks.filter(ct => moment().subtract(1, 'week').isBefore(ct.dateCompleted)).length,
-          taskNames,
           taskMarks,
           taskTimes
         };
