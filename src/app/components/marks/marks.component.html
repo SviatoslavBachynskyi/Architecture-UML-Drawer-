@@ -1,26 +1,28 @@
-<app-page-title value="Оцінки"></app-page-title>
- 
-<mat-table [dataSource]="marks">
-    <ng-container matColumnDef="task">
-        <mat-header-cell *matHeaderCellDef> Завдання </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.task}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="value">
-        <mat-header-cell *matHeaderCellDef> Оцінка </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.value}} / 5</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="dateCompleted">
-        <mat-header-cell *matHeaderCellDef> Дата Здачі </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.dateCompleted | date : 'dd.MM.YYYY'}} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="timeSpent">
-        <mat-header-cell *matHeaderCellDef> Витрачено часу </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.timeSpent | date : 'HH:mm:ss'}} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="attemptNumber">
-        <mat-header-cell *matHeaderCellDef> Номер Спроби </mat-header-cell>
-        <mat-cell *matCellDef="let row"> #{{row.attemptNumber}}</mat-cell>
-      </ng-container>
-    <mat-header-row *matHeaderRowDef="['task', 'value', 'dateCompleted', 'timeSpent', 'attemptNumber']"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: ['task', 'value', 'dateCompleted', 'timeSpent', 'attemptNumber']"></mat-row>
-</mat-table>
+<div class='root'>
+  <app-page-title value="Оцінки"></app-page-title>
+
+  <mat-table [dataSource]="marks">
+      <ng-container matColumnDef="task">
+          <mat-header-cell *matHeaderCellDef> Завдання </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.task}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="value">
+          <mat-header-cell *matHeaderCellDef> Оцінка </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.value}} / 10</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="dateCompleted">
+          <mat-header-cell *matHeaderCellDef> Дата Здачі </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.dateCompleted | date : 'dd.MM.YYYY'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="timeSpent">
+          <mat-header-cell *matHeaderCellDef> Витрачено часу </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.timeSpent | date : 'HH:mm:ss'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="attemptNumber">
+          <mat-header-cell *matHeaderCellDef> Номер Спроби </mat-header-cell>
+          <mat-cell *matCellDef="let row"> #{{row.attemptNumber}}</mat-cell>
+        </ng-container>
+      <mat-header-row *matHeaderRowDef="['task', 'value', 'dateCompleted', 'timeSpent', 'attemptNumber']"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['task', 'value', 'dateCompleted', 'timeSpent', 'attemptNumber']"></mat-row>
+  </mat-table>
+</div>

@@ -1,25 +1,27 @@
-<app-page-title value="доступні завдання"></app-page-title>
+<div class='root'>
+  <app-page-title value="доступні завдання"></app-page-title>
 
-<div class="tasks">
-  <div *ngFor="let task of tasks">
-    <app-task
-      [title]="task.title"
-      [description]="
-        task.description.length > 180
-          ? task.description.substring(0, 177) + '...'
-          : task.description
-      "
-    >
-    </app-task>
+  <div class="tasks">
+    <div *ngFor="let task of tasks">
+      <app-task
+        [title]="task.title"
+        [description]="
+          task.description.length > 180
+            ? task.description.substring(0, 177) + '...'
+            : task.description
+        "
+      >
+      </app-task>
+    </div>
   </div>
-</div>
-<div class="i-like-pagination">
-  <ngb-pagination
-    [collectionSize]="tasks.length"
-    [page]="1"
-    [maxSize]="100"
-    [rotate]="false"
-    [ellipses]="false"
-    [boundaryLinks]="true"
-  ></ngb-pagination>
+  <div class="i-like-pagination">
+    <ngb-pagination
+      [collectionSize]="tasks.length"
+      [page]="1"
+      [maxSize]="100"
+      [rotate]="false"
+      [ellipses]="false"
+      [boundaryLinks]="true"
+    ></ngb-pagination>
+  </div>
 </div>

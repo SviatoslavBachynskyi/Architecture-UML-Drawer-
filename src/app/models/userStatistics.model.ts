@@ -2,7 +2,11 @@ export interface UserStatistics {
   averageCompletionTime: number;
   averageMark: number;
   tasksCompletedLastWeek: number;
-  taskNames: string[];
-  taskMarks: number[];
-  taskTimes: number[];
+  taskMarks: TaskChartPair[];
+  taskTimes: TaskChartPair[];
+}
+
+export interface TaskChartPair {
+  value: number;
+  taskName: string;
 }
