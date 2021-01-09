@@ -10,6 +10,9 @@ export class ExecuteTaskComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      const drawIo = document.querySelector('iframe');
+      drawIo.contentWindow.postMessage({handlerName: 'addTaskSubmitButton'}, '*');
+    }, 3500);
   }
-
 }
