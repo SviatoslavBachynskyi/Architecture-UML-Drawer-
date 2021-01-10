@@ -63,7 +63,6 @@ export class AuthService {
     if (loginSuccessful) {
       localStorage.setItem(this.currentUserKey, JSON.stringify(currentUser));
       this.currentUser.next(currentUser);
-      console.log(`fired ${currentUser.username}`);
       this.router.navigate(['tasks']).then();
     }
 

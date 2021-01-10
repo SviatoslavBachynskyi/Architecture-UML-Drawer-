@@ -13,6 +13,7 @@ import { User } from '../../models/data/user.model';
 export class HeaderComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
   currentUser: User;
+  isAdmin = false;
 
   constructor(public authService: AuthService, private router: Router) {}
 
@@ -21,6 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .getCurrentUser()
       .subscribe((user) => {
         this.currentUser = user;
+        this.isAdmin = this.authService.isUserAdmin();
       });
   }
 

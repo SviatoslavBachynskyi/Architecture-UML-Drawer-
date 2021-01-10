@@ -23,7 +23,7 @@ export class StatisticsComponent implements OnInit {
 
   taskMarksChart = {
     data: [
-        { x: ['Завдання 1', 'Завдання 2', 'Завдання 3'], y: [9, 4, 6], type: 'bar', width: 0.667, marker: {color: '#3366cc'} }
+        { x: [], y: [], type: 'bar', width: 0.667, marker: {color: '#3366cc'} }
     ],
     layout: { width: chartSize * 1.2, height: chartSize, title: 'Оцінки за завдання', barmode: 'relative',
       xaxis: { title: { text: 'Завдання' }},
@@ -34,7 +34,7 @@ export class StatisticsComponent implements OnInit {
 
   taskTimeChart = {
     data: [
-        { x: ['Завдання 1', 'Завдання 2', 'Завдання 3'], y: [15, 12, 13], type: 'bar', width: 0.667, marker: {color: '#3366cc'} }
+        { x: [], y: [], type: 'bar', width: 0.667, marker: {color: '#3366cc'} }
     ],
     layout: { width: chartSize * 1.2, height: chartSize, title: 'Час виконання завдань',
       xaxis: { title: { text: 'Завдання' }},
