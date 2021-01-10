@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Task } from 'src/app/models/data/task.model';
@@ -9,7 +9,7 @@ import { TasksService } from '../../services/tasks.service';
   templateUrl: './execute-task.component.html',
   styleUrls: ['./execute-task.component.scss'],
 })
-export class ExecuteTaskComponent implements OnInit {
+export class ExecuteTaskComponent implements OnInit, OnDestroy {
   task: Task;
 
   constructor(
@@ -21,8 +21,18 @@ export class ExecuteTaskComponent implements OnInit {
     const taskId = this.route.snapshot.params.taskId;
     this.task = this.taskService.getTaskById(+taskId);
 
-    window.addEventListener('message', (msg) => {
-      console.log(JSON.parse(msg.data));
-    });
+    window.addEventListener('message', this.onUserSubmitTask);
+  }
+
+  onUserSubmitTask(msg) {
+    if (!msg.data) {
+      return;
+    }
+
+    console.log(JSON.parse(msg.data));
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('message', this.onUserSubmitTask);
   }
 }

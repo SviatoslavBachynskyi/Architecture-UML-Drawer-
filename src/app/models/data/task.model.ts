@@ -64,7 +64,7 @@ export const TasksSeededData: Task[] = [
   },
   {
     id: 2,
-    title: 'Абстрактна фабріка',
+    title: 'Будівельник',
     image: `iVBORw0KGgoAAAANSUhEUgAAAaQAAAEsCAMAAAC7cTeyAAABEVBMVEVHcEz////////////z8/Pz
     7+/////////////////7+/vw8PH////////////////////BwsNvcXLHyMj////9/f2xsrOTlZWH
     iop+gIGipaOsra24urrMzc47QEIuNDbh4uKcnp4zODovNTfR0tJITE5gY2T////X2Nbb3Nq1t7Wl
@@ -148,8 +148,8 @@ export const TasksSeededData: Task[] = [
     D5kjk/nnjgm/AAAAAElFTkSuQmCC`,
     type: 'Породжувальний',
     description:
-      'шось зробити',
-    level: 'Легка',
+      'Визначити інтерфейс "Builder", який містить у собі методи stepA() та stepB(). Визначити класи ConcreteBuilder1 та ConcreteBuilder2, що імплементовують цей інтерфейс та додатково містять приватне поле "result" з типом Product1 або Product2 відповідно',
+    level: 'Середня',
   },
   {
     id: 3,
@@ -461,7 +461,7 @@ export const TasksSeededData: Task[] = [
     type: 'Породжувальний',
     description:
       'Визначити базовий декоратор "Notifier" для відправлення сповіщень, який містить у собі метод "Notify(message: string): void". Також додати класи "SMSDecorator", "FacebookDecorator", "SkypeDecorator" що допомагають відправляти сповіщення через вказані сервіси',
-    level: 'Середня',
+    level: 'Висока',
   },
   {
     id: 4,
@@ -595,7 +595,7 @@ export const TasksSeededData: Task[] = [
     +xFk3749W8C3JwVCTOPQUOC5hGLPFtQPAAAAAAAAAAAAgC+urLrrTQFZ3wAAAABJRU5ErkJggg==`,
     type: 'Поведінковий',
     description:
-      'шось зробити',
+      'Визначити інтерфейс "RouteStrategy" для побудови маршруту онлайн-карт з публічним методом "BuildRoute(A: string, B: string)". Додати класи RoadStrategy та WalkingStrategy, що імплементовують ці інтерфейси',
     level: 'Середня',
   },
 ];

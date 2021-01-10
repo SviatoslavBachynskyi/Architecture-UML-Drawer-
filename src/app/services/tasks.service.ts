@@ -73,7 +73,7 @@ export class TasksService {
       mark.timeSpent.setSeconds(ct.elapsedSeconds);
 
       return mark;
-    }).sort((a, b) => moment(a.dateCompleted).diff(moment(b.dateCompleted)));
+    }).sort((a, b) => moment(b.dateCompleted).diff(moment(a.dateCompleted)));
 
     const markAttempts = new Map<number, number>();
 
