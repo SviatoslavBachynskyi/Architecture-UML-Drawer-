@@ -42,7 +42,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService, AdminAuthGuardService],
   },
   {
-    path: 'execute-task',
+    path: 'execute-task/:taskId',
     component: ExecuteTaskComponent,
     canActivate: [AuthGuardService],
   },

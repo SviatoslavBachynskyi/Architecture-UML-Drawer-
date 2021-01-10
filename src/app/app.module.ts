@@ -21,6 +21,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { ExecuteTaskComponent } from './components/execute-task/execute-task.component';
 import { TaskPreviewComponent } from './modals/task-preview/task-preview.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -47,6 +48,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     CommonModule,
     PlotlyModule,
     ReactiveFormsModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

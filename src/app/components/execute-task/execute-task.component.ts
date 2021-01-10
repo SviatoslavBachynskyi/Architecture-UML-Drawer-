@@ -1,23 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { Task } from 'src/app/models/data/task.model';
+import { TasksService } from '../../services/tasks.service';
 
 @Component({
   selector: 'app-execute-task',
   templateUrl: './execute-task.component.html',
-  styleUrls: ['./execute-task.component.scss']
+  styleUrls: ['./execute-task.component.scss'],
 })
 export class ExecuteTaskComponent implements OnInit {
+  task: Task;
 
-  constructor() {
-    window.addEventListener('message', (msg) => {
-      console.log(msg);
-      console.log(msg.data.diagramObjects);
-    }, false);
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private taskService: TasksService
+  ) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      const drawIo = document.querySelector('iframe');
-      drawIo.contentWindow.postMessage({handlerName: 'addTaskSubmitButton'}, '*');
-    }, 3500);
+    const taskId = this.route.snapshot.params.taskId;
+    this.task = this.taskService.getTasksById(taskId)[0];
+
+    window.addEventListener('message', (msg) => {
+      console.log(JSON.parse(msg.data));
+    });
   }
 }
