@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import { CompletedTask, CompletedTasksSeededData } from '../models/data/completedTask.model';
 
+import { CompletedTask, CompletedTasksSeededData } from '../models/data/completedTask.model';
 import { Task, TasksSeededData } from '../models/data/task.model';
 import { Mark } from '../models/mark.model';
 
@@ -23,8 +23,13 @@ export class TasksService {
     return JSON.parse(tasksString);
   }
 
-  getTasksById(taskId: number[]): Task[] {
-    return this.getTasks().filter(t => taskId.indexOf(t.id) >= 0);
+  getTaskById(taskId: number): Task {
+    let task = this.getTasks();
+    return this.getTasks().find(t => t.id === taskId);
+  }
+
+  getTasksByIds(taskIds: number[]): Task[] {
+    return this.getTasks().filter(t => taskIds.indexOf(t.id) >= 0);
   }
 
   getCompletedTasks(): CompletedTask[] {
@@ -32,14 +37,29 @@ export class TasksService {
     return JSON.parse(completedTasksString);
   }
 
-  getUserCompletedTasks(username: string): CompletedTask[] {
-    return this.getCompletedTasks().filter(t => t.username === username);
+  getUserCompletedTasks(username: string, taskId?: number): CompletedTask[] {
+    let res = this.getCompletedTasks().filter(t => t.username === username);
+    if (taskId)
+      res = this.getCompletionForTask(res, taskId);
+
+    return res;
   }
 
-  getUserMarks(username: string): Mark[] {
-    const completedTasks = this.getUserCompletedTasks(username);
+  getCompletionForTask(completedTasks: CompletedTask[], taskId: number): CompletedTask[] {
+    return completedTasks.filter(ct => ct.taskId === taskId);
+  }
 
-    const tasks = this.getTasksById(completedTasks.map(ct => ct.taskId));
+  getMark(completions: CompletedTask[]): number {
+    return completions.reduce((max, ct) => max.mark > ct.mark ? max : ct).mark;
+  }
+
+  getBestTime(completions: CompletedTask[]): number {
+    return completions.reduce((best, ct) => best.elapsedSeconds < ct.elapsedSeconds ? best : ct).elapsedSeconds;
+  }
+
+
+  mapCompletionToMarks(completedTasks: CompletedTask[]): Mark[] {
+    const tasks = this.getTasksByIds(completedTasks.map(ct => ct.taskId));
 
     const marks: Mark[] = completedTasks.map(ct => {
       const mark: Mark = {
@@ -67,6 +87,12 @@ export class TasksService {
     });
 
     return marks;
+  }
+
+  getUserMarks(username: string): Mark[] {
+    const completedTasks = this.getUserCompletedTasks(username);
+
+    return this.mapCompletionToMarks(completedTasks);
   }
 
   addTask(newTask: Task): void {

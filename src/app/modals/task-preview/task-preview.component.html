@@ -14,22 +14,22 @@
                 <div class="label">Складність: </div>
                 <div class="data">{{taskPreview.level}}</div>
             </div>
-            <div class="field">
+            <div class="field" *ngIf="taskPreview.currentMark">
                 <div class="label">Поточна оцінка: </div>
                 <div class="data">{{taskPreview.currentMark}}</div>
             </div>
-            <div class="field">
+            <div class="field" *ngIf="taskPreview.bestExecutionTime">
                 <div class="label">Найкращий час виконання: </div>
                 <div class="data">{{taskPreview.bestExecutionTime | date : 'HH:mm:ss'}}</div>
             </div>
-            <mat-table [dataSource]="taskPreview.marks" *ngIf="taskPreview.marks">
+            <mat-table [dataSource]="taskPreview.marks" *ngIf="taskPreview.marks && taskPreview.marks.length">
                 <ng-container matColumnDef="attemptNumber">
                     <mat-header-cell *matHeaderCellDef> Номер Спроби </mat-header-cell>
                     <mat-cell *matCellDef="let row"> #{{row.attemptNumber}}</mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="value">
                     <mat-header-cell *matHeaderCellDef> Оцінка </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.value}} / 5</mat-cell>
+                    <mat-cell *matCellDef="let row"> {{row.value}} / 10</mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="dateCompleted">
                     <mat-header-cell *matHeaderCellDef> Дата Здачі </mat-header-cell>
@@ -49,6 +49,6 @@
 
     <div class="actions">
         <button class="action" mat-raised-button (click)="closeModal()">Скасувати</button>
-        <button class="action" mat-raised-button color="primary" (click)="closeModal()">Почати виконання</button>
+        <button class="action" mat-raised-button color="primary" (click)="executeTask()">Почати виконання</button>
     </div>
 </div>

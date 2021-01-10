@@ -4,12 +4,7 @@
   <div class="tasks">
     <div *ngFor="let task of tasks">
       <app-task
-        [title]="task.title"
-        [description]="
-          task.description.length > 180
-            ? task.description.substring(0, 177) + '...'
-            : task.description
-        "
+        [task]="task"
       >
       </app-task>
     </div>

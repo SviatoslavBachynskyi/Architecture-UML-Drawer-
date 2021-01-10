@@ -24,7 +24,7 @@ export class StatsService {
           .sort((a, b) => moment(a.dateCompleted).diff(moment(b.dateCompleted)));
         const completedTasks = this.tasksService.getUserCompletedTasks(user.username);
 
-        const tasks = this.tasksService.getTasksById(completedTasks.map(ct => ct.taskId));
+        const tasks = this.tasksService.getTasksByIds(completedTasks.map(ct => ct.taskId));
 
         if (userMarks.length <= 0) {
           return null;
@@ -34,17 +34,17 @@ export class StatsService {
         const taskTimes: TaskChartPair[] = [];
 
         tasks.forEach(t => {
-          const completions = completedTasks.filter(ct => ct.taskId === t.id);
+          const completions = this.tasksService.getCompletionForTask(completedTasks, t.id);
 
           const taskName = t.title.length < 12 ?
             t.title
             : `${t.title.substr(0, 12)}...`;
 
-          const highestMark = completions.reduce((max, ct) => max.mark > ct.mark ? max : ct);
-          const bestTime = completions.reduce((best, ct) => best.elapsedSeconds < ct.elapsedSeconds ? best : ct);
+          const highestMark = this.tasksService.getMark(completions);
+          const bestTime = this.tasksService.getBestTime(completions);
 
-          taskMarks.push({taskName, value: highestMark.mark});
-          taskTimes.push({taskName, value: bestTime.elapsedSeconds});
+          taskMarks.push({taskName, value: highestMark});
+          taskTimes.push({taskName, value: bestTime});
         });
 
         return {

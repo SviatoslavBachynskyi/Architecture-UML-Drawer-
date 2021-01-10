@@ -28,6 +28,10 @@ export class TaskPreviewComponent implements OnInit {
 
   closeModal(): void {
     this.dialogRef.close();
+  }
+  
+  executeTask(): void {
+    this.dialogRef.close();
     this.router.navigate(['execute-task', this.taskPreview.id]).then();
   }
 }

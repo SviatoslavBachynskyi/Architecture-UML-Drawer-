@@ -1,9 +1,9 @@
 <div class="task" (click)="openDialog()">
     <div class="title">
-      {{title}}
+      {{task.title}}
     </div>
 
     <div class="description">
-        {{description}}
+        {{shrinkString(task.description, 180)}}
     </div>
 </div>

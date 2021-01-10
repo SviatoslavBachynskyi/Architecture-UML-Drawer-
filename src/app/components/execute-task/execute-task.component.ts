@@ -19,7 +19,7 @@ export class ExecuteTaskComponent implements OnInit {
 
   ngOnInit(): void {
     const taskId = this.route.snapshot.params.taskId;
-    this.task = this.taskService.getTasksById(taskId)[0];
+    this.task = this.taskService.getTaskById(+taskId);
 
     window.addEventListener('message', (msg) => {
       console.log(JSON.parse(msg.data));
