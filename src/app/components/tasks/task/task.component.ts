@@ -3,7 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { Task } from 'src/app/models/data/task.model';
 import { TaskPreviewComponent } from './../../../modals/task-preview/task-preview.component';
-import { TaskPreviewService } from './../../../services/taskPreview.service.';
+import { TaskPreviewService } from './../../../services/taskPreview.service';
 import { TaskPreview } from './../../../models/taskPreview.model';
 
 @Component({
@@ -19,7 +19,7 @@ export class TaskComponent implements OnInit {
   ngOnInit(): void {}
 
   shrinkString(str: String, preferedLenghth: number) : String{
-    return (str.length > preferedLenghth) ? str.substring(0, preferedLenghth) + '...' : str; 
+    return (str.length > preferedLenghth) ? str.substring(0, preferedLenghth) + '...' : str;
   }
 
   openDialog(): void {

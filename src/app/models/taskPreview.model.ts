@@ -1,4 +1,4 @@
-import { Mark } from "./mark.model";
+import { Mark } from './mark.model';
 
 export interface TaskPreview {
   id: number;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { CompletedTask } from './../models/data/completedTask.model';
-import { TaskPreview } from './../models/taskPreview.model';
+import { CompletedTask } from '../models/data/completedTask.model';
+import { TaskPreview } from '../models/taskPreview.model';
 import { TasksService } from './tasks.service';
 import { AuthService } from './auth.service';
 
@@ -13,7 +13,7 @@ export class TaskPreviewService {
   constructor(private tasksService: TasksService, private authService: AuthService) { }
 
   getTaskPreview(taskId: number): TaskPreview {
-    
+
     let user;
     this.authService.getCurrentUser().subscribe(u => user = u);
 

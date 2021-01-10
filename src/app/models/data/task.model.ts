@@ -5,6 +5,7 @@ export interface Task {
   type: string;
   level: string;
   description: string;
+  etalon?: string;
 }
 
 export const TasksSeededData: Task[] = [

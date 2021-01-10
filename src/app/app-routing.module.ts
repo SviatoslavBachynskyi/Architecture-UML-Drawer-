@@ -9,6 +9,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { ExecuteTaskComponent } from './components/execute-task/execute-task.component';
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import { CreateEtalonComponent } from './components/create-etalon/create-etalon.component';
 
 const routes: Routes = [
   {
@@ -42,9 +44,19 @@ const routes: Routes = [
     canActivate: [AuthGuardService, AdminAuthGuardService],
   },
   {
+    path: 'add-task',
+    component: AddTaskComponent,
+    canActivate: [AuthGuardService, AdminAuthGuardService],
+  },
+  {
     path: 'execute-task/:taskId',
     component: ExecuteTaskComponent,
     canActivate: [AuthGuardService],
+  },
+  {
+    path: 'create-etalon/:taskId',
+    component: CreateEtalonComponent,
+    canActivate: [AuthGuardService, AdminAuthGuardService],
   },
   {
     path: '**',

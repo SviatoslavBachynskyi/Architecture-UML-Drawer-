@@ -24,7 +24,7 @@ export class TasksService {
   }
 
   getTaskById(taskId: number): Task {
-    let task = this.getTasks();
+    const task = this.getTasks();
     return this.getTasks().find(t => t.id === taskId);
   }
 
@@ -39,8 +39,9 @@ export class TasksService {
 
   getUserCompletedTasks(username: string, taskId?: number): CompletedTask[] {
     let res = this.getCompletedTasks().filter(t => t.username === username);
-    if (taskId)
+    if (taskId) {
       res = this.getCompletionForTask(res, taskId);
+    }
 
     return res;
   }
@@ -95,12 +96,38 @@ export class TasksService {
     return this.mapCompletionToMarks(completedTasks);
   }
 
-  addTask(newTask: Task): void {
+  addTask(newTask: Omit<Task, 'id'>): number {
     const tasksString = localStorage.getItem(KeyTasks);
     const tasks = JSON.parse(tasksString) as Task[];
-    tasks.push(newTask);
 
-    localStorage.setItem(KeyTasks, JSON.stringify(newTask));
+    if (tasks.find(t => t.title === newTask.title)) {
+      return null;
+    }
+
+    const lastTask = tasks.sort((a, b) => a.id - b.id)[tasks.length - 1];
+    const createId = !!lastTask ? lastTask.id + 1 : 1;
+
+    tasks.push({
+      ...newTask,
+      id: createId
+    });
+
+    localStorage.setItem(KeyTasks, JSON.stringify(tasks));
+
+    return createId;
+  }
+
+  addEtalon(taskId: number, etalon: string): void {
+    const tasks = this.getTasks();
+    const updated = tasks.find(t => t.id === taskId);
+
+    if (!updated) { return; }
+
+    if (!!(updated.etalon)) { return; }
+
+    updated.etalon = etalon;
+
+    localStorage.setItem(KeyTasks, JSON.stringify(tasks));
   }
 
   private ensureTasksSeeded(): void {

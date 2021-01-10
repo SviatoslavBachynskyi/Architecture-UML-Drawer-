@@ -24,7 +24,7 @@ export class ExecuteTaskComponent implements OnInit, OnDestroy {
     window.addEventListener('message', this.onUserSubmitTask);
   }
 
-  onUserSubmitTask(msg) {
+  onUserSubmitTask(msg): void {
     if (!msg.data) {
       return;
     }

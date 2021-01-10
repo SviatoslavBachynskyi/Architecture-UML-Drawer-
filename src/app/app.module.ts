@@ -22,6 +22,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { ExecuteTaskComponent } from './components/execute-task/execute-task.component';
 import { TaskPreviewComponent } from './modals/task-preview/task-preview.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import { CreateEtalonComponent } from './components/create-etalon/create-etalon.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -38,6 +40,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     AddUserComponent,
     ExecuteTaskComponent,
     TaskPreviewComponent,
+    AddTaskComponent,
+    CreateEtalonComponent,
   ],
   imports: [
     BrowserModule,
