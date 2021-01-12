@@ -9,6 +9,7 @@ export class EvaluationService {
   constructor() { }
 
   evaluateTask(etalon: string, completedTask: string, maxMark: number): number {
-    return stringSimilarity.compareTwoStrings(etalon, completedTask) * maxMark;
+    const mark = stringSimilarity.compareTwoStrings(etalon, completedTask) * maxMark;
+    return +mark.toFixed(1);
   }
 }

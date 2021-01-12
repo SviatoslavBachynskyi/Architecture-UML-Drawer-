@@ -44,7 +44,6 @@ export class ExecuteTaskComponent implements OnInit, OnDestroy {
 
     const mark = this.evaluationService.evaluateTask(this.task.etalon, msg.data, 10);
     const endDate = new Date();
-
     this.taskService.addCompletedTask({
       dateCompleted: new Date(),
       elapsedSeconds: (endDate.getDate() - this.startDate.getDate()) / 1000,
@@ -53,7 +52,7 @@ export class ExecuteTaskComponent implements OnInit, OnDestroy {
       username: this.currentUser.username
     });
 
-    this.router.navigate(['marks']);
+    this.router.navigate(['marks']).then();
   }
 
   ngOnDestroy(): void {

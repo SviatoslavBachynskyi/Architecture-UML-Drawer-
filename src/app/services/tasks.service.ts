@@ -130,7 +130,9 @@ export class TasksService {
   }
 
   addCompletedTask(completedTask: CompletedTask): void {
-
+    const completedTasks = this.getCompletedTasks();
+    completedTasks.push(completedTask);
+    localStorage.setItem(KeyCompletedTasks, JSON.stringify(completedTasks));
   }
 
   private ensureTasksSeeded(): void {

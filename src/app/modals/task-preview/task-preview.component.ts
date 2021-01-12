@@ -1,4 +1,4 @@
-import { AuthService } from './../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -32,20 +32,19 @@ export class TaskPreviewComponent implements OnInit {
   ngOnInit(): void {
     this.userSubscription = this.authService
       .getCurrentUser()
-      .subscribe((user) => {
-        debugger;
+      .subscribe(() => {
         this.isAdmin = this.authService.isUserAdmin();
       });
   }
 
   ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();    
+    this.userSubscription.unsubscribe();
   }
 
   closeModal(): void {
     this.dialogRef.close();
   }
-  
+
   executeTask(): void {
     this.dialogRef.close();
     this.router.navigate(['execute-task', this.taskPreview.id]).then();
