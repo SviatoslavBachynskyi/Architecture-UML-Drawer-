@@ -17,9 +17,10 @@ export class MarksComponent implements OnInit {
   constructor(private authService: AuthService, private taskService: TasksService) { }
 
   ngOnInit(): void {
-    let user : User; 
+    let user: User;
     this.authService.getCurrentUser().subscribe(res => user = res);
     this.marks = this.taskService.getUserMarks(user.username);
+    this.marks.forEach(m => m.timeSpent.setHours(0));
   }
 
 }

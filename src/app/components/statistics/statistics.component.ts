@@ -65,7 +65,7 @@ export class StatisticsComponent implements OnInit {
 
       this.updateTimesChart(
         stats.taskTimes.map(t => t.taskName).slice(-numOfTasksToShowOnChart),
-        stats.taskTimes.map(t => t.value).slice(-numOfTasksToShowOnChart)
+        stats.taskTimes.map(t => +(t.value / 60).toFixed(1)).slice(-numOfTasksToShowOnChart)
       );
     });
   }

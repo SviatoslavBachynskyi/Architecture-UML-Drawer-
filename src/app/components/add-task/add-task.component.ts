@@ -10,15 +10,17 @@ import { TasksService } from 'src/app/services/tasks.service';
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent implements OnInit {
-  form: FormGroup;
-  error: string;
-  @ViewChild('imageFile') imageFile;
 
   constructor(
     private fb: FormBuilder,
     private taskService: TasksService,
     private router: Router
   ) { }
+  form: FormGroup;
+  error: string;
+  @ViewChild('imageFile') imageFile;
+
+  image: string;
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -29,24 +31,21 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-  image: string;
-
   trimLeft(initialString: string, stringToTrim: string): string {
     return initialString.startsWith(stringToTrim) ? initialString.substring(stringToTrim.length) : initialString;
   }
 
   onSubmit(): void {
     if (this.form.valid) {
-      let fileInput = this.imageFile.nativeElement;
+      const fileInput = this.imageFile.nativeElement;
       if (fileInput.files && fileInput.files[0]) {
-        let fileReader = new FileReader();
+        const fileReader = new FileReader();
         fileReader.onload = (e) => {
-          debugger;
-          let image = String(fileReader.result);
-          this.image = this.trimLeft(image, "data:image/png;base64,");
+          const image = String(fileReader.result);
+          this.image = this.trimLeft(image, 'data:image/png;base64,');
 
           this.saveTask();
-        }
+        };
 
         fileReader.readAsDataURL(fileInput.files[0]);
       }

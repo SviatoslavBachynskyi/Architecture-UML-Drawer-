@@ -16,7 +16,7 @@
         </ng-container>
         <ng-container matColumnDef="timeSpent">
           <mat-header-cell *matHeaderCellDef> Витрачено часу </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.timeSpent | date : 'HH:mm:ss'}} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{row.timeSpent | date : 'HH:mm:ss' : '0000'}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="attemptNumber">
           <mat-header-cell *matHeaderCellDef> Номер Спроби </mat-header-cell>

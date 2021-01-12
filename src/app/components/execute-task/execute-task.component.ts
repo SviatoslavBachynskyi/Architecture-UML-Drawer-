@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from "rxjs";
+import { Subscription } from 'rxjs';
 
 import { Task } from 'src/app/models/data/task.model';
 import { TasksService } from '../../services/tasks.service';
-import { EvaluationService } from "../../services/evaluation.service";
-import { AuthService } from "../../services/auth.service";
-import { User } from "../../models/data/user.model";
+import { EvaluationService } from '../../services/evaluation.service';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/data/user.model';
 
 @Component({
   selector: 'app-execute-task',
@@ -17,7 +17,7 @@ export class ExecuteTaskComponent implements OnInit, OnDestroy {
   task: Task;
   currentUser: User;
   subscription: Subscription;
-  startDate = new Date();
+  startDate = Date.now();
 
   constructor(
     private route: ActivatedRoute,
@@ -37,16 +37,16 @@ export class ExecuteTaskComponent implements OnInit, OnDestroy {
   }
 
   onUserSubmitTask = (msg: MessageEvent): void => {
-    const dataInvalid = typeof(msg.data) !== "string";
+    const dataInvalid = typeof(msg.data) !== 'string';
     if (dataInvalid) {
       return;
     }
 
     const mark = this.evaluationService.evaluateTask(this.task.etalon, msg.data, 10);
-    const endDate = new Date();
+    const endDate = Date.now();
     this.taskService.addCompletedTask({
       dateCompleted: new Date(),
-      elapsedSeconds: (endDate.getDate() - this.startDate.getDate()) / 1000,
+      elapsedSeconds: (endDate - this.startDate) / 1000,
       mark,
       taskId: this.task.id,
       username: this.currentUser.username
