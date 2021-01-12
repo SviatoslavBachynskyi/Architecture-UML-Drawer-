@@ -2,23 +2,21 @@
   <div class="title header-element">Віртуальна лабораторія</div>
 
   <div class="tabs header-element">
-    <div *ngIf="!isAdmin">
+    <div>
       <button class="header-btn" mat-button routerLink="tasks">
         Доступні завдання
       </button>
-      <button class="header-btn" mat-button routerLink="marks">Оцінки</button>
-      <button class="header-btn" mat-button routerLink="statistics">
+      <button *ngIf="!isAdmin" class="header-btn" mat-button routerLink="marks">Оцінки</button>
+      <button *ngIf="!isAdmin" class="header-btn" mat-button routerLink="statistics">
         Статистика
       </button>
     </div>
-    <div *ngIf="isAdmin">
-      <button class="header-btn" mat-button routerLink="add-task">
+      <button *ngIf="isAdmin" class="header-btn" mat-button routerLink="add-task">
         Додати завдання
       </button>
-      <button class="header-btn" mat-button routerLink="add-student">
+      <button *ngIf="isAdmin" class="header-btn" mat-button routerLink="add-student">
         Додати користувача
       </button>
-    </div>
   </div>
 
   <div

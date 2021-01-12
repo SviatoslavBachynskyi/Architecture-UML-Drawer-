@@ -48,7 +48,8 @@
     </div>
 
     <div class="actions">
-        <button class="action" mat-raised-button (click)="closeModal()">Скасувати</button>
-        <button class="action" mat-raised-button color="primary" (click)="executeTask()">Почати виконання</button>
+        <button class="action" *ngIf="isAdmin" mat-raised-button (click)="closeModal()">Повернутися до завдань</button>
+        <button class="action" *ngIf="!isAdmin" mat-raised-button (click)="closeModal()">Скасувати</button>
+        <button class="action" *ngIf="!isAdmin" mat-raised-button color="primary" (click)="executeTask()">Почати виконання</button>
     </div>
 </div>
