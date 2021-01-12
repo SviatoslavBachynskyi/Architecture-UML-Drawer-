@@ -24,7 +24,6 @@ export class TasksService {
   }
 
   getTaskById(taskId: number): Task {
-    const task = this.getTasks();
     return this.getTasks().find(t => t.id === taskId);
   }
 
@@ -128,6 +127,10 @@ export class TasksService {
     updated.etalon = etalon;
 
     localStorage.setItem(KeyTasks, JSON.stringify(tasks));
+  }
+
+  addCompletedTask(completedTask: CompletedTask): void {
+
   }
 
   private ensureTasksSeeded(): void {
