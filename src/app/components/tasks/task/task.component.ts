@@ -14,11 +14,11 @@ import { TaskPreview } from './../../../models/taskPreview.model';
 export class TaskComponent implements OnInit {
   @Input() task: Task;
 
-  constructor(public taskPreviewService: TaskPreviewService,public matDialog: MatDialog) {}
+  constructor(public taskPreviewService: TaskPreviewService, public matDialog: MatDialog) {}
 
   ngOnInit(): void {}
 
-  shrinkString(str: String, preferedLenghth: number) : String{
+  shrinkString(str: string, preferedLenghth: number): string{
     return (str.length > preferedLenghth) ? str.substring(0, preferedLenghth) + '...' : str;
   }
 
@@ -26,9 +26,9 @@ export class TaskComponent implements OnInit {
     const dialogConfig = new MatDialogConfig<TaskPreview>();
     // The user can't close the dialog by clicking outside its body
     dialogConfig.disableClose = false;
-    dialogConfig.id = "modal-component";
-    dialogConfig.height = "900px";
-    dialogConfig.width = "800px";
+    dialogConfig.id = 'modal-component';
+    dialogConfig.height = '900px';
+    dialogConfig.width = '800px';
     dialogConfig.data = this.taskPreviewService.getTaskPreview(this.task.id);
     // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(TaskPreviewComponent, dialogConfig);

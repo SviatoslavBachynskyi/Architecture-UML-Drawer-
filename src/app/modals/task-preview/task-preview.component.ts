@@ -1,5 +1,5 @@
 import { AuthService } from '../../services/auth.service';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -12,9 +12,9 @@ import { Subscription } from 'rxjs';
   templateUrl: './task-preview.component.html',
   styleUrls: ['./task-preview.component.scss'],
 })
-export class TaskPreviewComponent implements OnInit {
+export class TaskPreviewComponent implements OnInit, OnDestroy {
   public imageUrlSanitized: SafeUrl;
-  public isAdmin: boolean = false;
+  public isAdmin = false;
   public userSubscription: Subscription;
 
   constructor(
