@@ -8,14 +8,8 @@ export interface Task {
   etalon?: string;
 }
 
-export const TasksSeededData: Task[] = [
-  {
-    id: 1,
-    title: 'Фабричний метод',
-    type: 'Породжувальний',
-    level: 'Легкий',
-    description: 'Визначити базовий абстрактний клас "UIElement", який містить у собі метод "CreateElement(): UIElement", що перевизначається у дочірніх класах "HtmlButton" та "HtmlAnchorTag"',
-    image: `iVBORw0KGgoAAAANSUhEUgAAAaQAAAEsCAMAAAC7cTeyAAAAzFBMVEVHcEz////9/f3x8fH/////
+const factoryMethodImage =
+    `iVBORw0KGgoAAAANSUhEUgAAAaQAAAEsCAMAAAC7cTeyAAAAzFBMVEVHcEz////9/f3x8fH/////
     ///////////8/Pzw8PD////////////DxcZvcnPJy8mur6+Rk5OFh4d7fn+ipqKytrG2ubXU1dXT
     1883PT8uNDbp6enn6OibnZ1KT09bX1+lqaXV1tfb3Nu/w73+/v7u7uz///9TV1hhZGX7+/vn6OhD
     SUlUWVn9/f38/f3///9PU1T///9UWFfDx8D////4+PhPVFXboKDBPT26HR3EWVn26Oj25eXESEjq
@@ -60,16 +54,17 @@ export const TasksSeededData: Task[] = [
     Eq5jN1LS8OeCN5+FSPF8G8WCSESy8nsuDoW/q4JIpevm/tYXItlHJCIRiUhEIhKRiEQkIhGJSEQi
     EpGIRCQitTXSRsVpxU8/7W1w1LaNitZGOqi4qvjp9yYMjtp2UNHGSK1DJPuIFBS5aqW8CJy2cMN9
     1Ur7oeu0xsBfzboaF3nyrfxiytEmyFb9gdMikber8+ePphxtBC9y2iVIWydwMBsAAAAAAAAAAAAA
-    AAAAAAAAAAAAAAAAAAAAAAD8DeB5K2Pjyvu+AAAAAElFTkSuQmCC`,
-    etalon: '[{"type":"class","className":"<i>UIElement</i>","privateAttributes":[],"publicAttributes":[],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"CreateElement()","returnType":"UIElement"}],"protectedMethods":[],"implements":[],"extends":[]},{"type":"class","className":"HtmlAnchorTag","privateAttributes":[],"publicAttributes":[],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"CreateElement()","returnType":"UIElement"}],"protectedMethods":[],"implements":[],"extends":["<i>UIElement</i>"]},{"type":"class","className":"HtmlButton","privateAttributes":[],"publicAttributes":[],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"CreateElement()","returnType":"UIElement"}],"protectedMethods":[],"implements":[],"extends":["<i>UIElement</i>"]}]'
-  },
-  {
-    id: 2,
-    title: 'Будівельник',
-    type: 'Породжувальний',
-    level: 'Середній',
-    description: 'Визначити інтерфейс "Builder", який містить у собі методи StepA() та StepB(). Визначити класи ConcreteBuilder1 та ConcreteBuilder2, що імплементовують цей інтерфейс та додатково містять приватне поле "Result" з типом Product1 та Product2 відповідно',
-    image: `iVBORw0KGgoAAAANSUhEUgAAAaQAAAEsCAMAAAC7cTeyAAABEVBMVEVHcEz////////////z8/Pz
+    AAAAAAAAAAAAAAAAAAAAAAD8DeB5K2Pjyvu+AAAAAElFTkSuQmCC`;
+const factoryMethodEtalon =
+    `[{"type":"class","className":"<i>UIElement</i>","privateAttributes":[],"publicAttributes":[],"protectedAttributes":[],
+    "privateMethods":[],"publicMethods":[{"methodName":"CreateElement()","returnType":"UIElement"}],"protectedMethods":[],"implements":[],"extends":[]},
+    {"type":"class","className":"HtmlAnchorTag","privateAttributes":[],"publicAttributes":[],"protectedAttributes":[],"privateMethods":[],
+    "publicMethods":[{"methodName":"CreateElement()","returnType":"UIElement"}],"protectedMethods":[],"implements":[],"extends":["<i>UIElement</i>"]},
+    {"type":"class","className":"HtmlButton","privateAttributes":[],"publicAttributes":[],"protectedAttributes":[],"privateMethods":[],
+    "publicMethods":[{"methodName":"CreateElement()","returnType":"UIElement"}],"protectedMethods":[],"implements":[],"extends":["<i>UIElement</i>"]}]`;
+
+const builderImage =
+    `iVBORw0KGgoAAAANSUhEUgAAAaQAAAEsCAMAAAC7cTeyAAABEVBMVEVHcEz////////////z8/Pz
     7+/////////////////7+/vw8PH////////////////////BwsNvcXLHyMj////9/f2xsrOTlZWH
     iop+gIGipaOsra24urrMzc47QEIuNDbh4uKcnp4zODovNTfR0tJITE5gY2T////X2Nbb3Nq1t7Wl
     pqf////r6+v////////////////p6elTV1fm5+fr7Oz29fXd3d5bXl9laGn7+/tPVFX////8/Pz/
@@ -149,16 +144,18 @@ export const TasksSeededData: Task[] = [
     SbyuCpL68u6HK+9uICn20TwAkiAJkuZREoAkSIIkSIKkMw+IJGZXBXlPeu/KrzO+J0HSngdEEq+r
     gsw43AxcucGMA+buwgeSgLR0TNSTFKkNC2Txv6rP0lWRUcbIXPPTMQFpWOAt/re75YAr9iqTKxbs
     86+DK18GX7u24gko6MzF/6odfIWtkiu+B0CuAMyGhX2VfYUyBeMzpAMAAAAAAAAAAAAAAAAAAAD+
-    D5kjk/nnjgm/AAAAAElFTkSuQmCC`,
-    etalon: '[{"type":"interface","interfaceName":"Builder","privateAttributes":[],"publicAttributes":[],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"StepA()","returnType":"void"}],"protectedMethods":[],"implements":[],"extends":[]},{"type":"class","className":"ConcreteBuilder1","privateAttributes":[{"attributeName":"result","type":"Product1"}],"publicAttributes":[],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"StepA()","returnType":"void"}],"protectedMethods":[],"implements":[],"extends":[]},{"type":"class","className":"ConcreteBuilder2","privateAttributes":[{"attributeName":"result","type":"Product2"}],"publicAttributes":[],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"StepA()","returnType":"void"}],"protectedMethods":[],"implements":["Builder","Builder"],"extends":[]}]'
-  },
-  {
-    id: 3,
-    title: 'Декоратор',
-    type: 'Породжувальний',
-    level: 'Високий',
-    description: 'Визначити базовий декоратор "Notifier" для відправлення сповіщень, який містить у собі метод "Notify(message: string): void". Також додати класи "SMSDecorator", "FacebookDecorator", "SkypeDecorator" що допомагають відправляти сповіщення через вказані сервіси',
-    image: `iVBORw0KGgoAAAANSUhEUgAAAaQAAAEsCAMAAAC7cTeyAAABg1BMVEVHcEz/////////////////
+    D5kjk/nnjgm/AAAAAElFTkSuQmCC`;
+const builderEtalon =
+    `[{"type":"interface","interfaceName":"Builder","privateAttributes":[],"publicAttributes":[],"protectedAttributes":[],
+    "privateMethods":[],"publicMethods":[{"methodName":"StepA()","returnType":"void"}],"protectedMethods":[],"implements":[],"extends":[]},
+    {"type":"class","className":"ConcreteBuilder1","privateAttributes":[{"attributeName":"result","type":"Product1"}],
+    "publicAttributes":[],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"StepA()","returnType":"void"}],
+    "protectedMethods":[],"implements":[],"extends":[]},{"type":"class","className":"ConcreteBuilder2",
+    "privateAttributes":[{"attributeName":"result","type":"Product2"}],"publicAttributes":[],"protectedAttributes":[],"privateMethods":[],
+    "publicMethods":[{"methodName":"StepA()","returnType":"void"}],"protectedMethods":[],"implements":["Builder","Builder"],"extends":[]}]`;
+
+const decoratorImage =
+    `iVBORw0KGgoAAAANSUhEUgAAAaQAAAEsCAMAAAC7cTeyAAABg1BMVEVHcEz/////////////////
     ///////////////////////////////////9/f3////z8/Ph4eDQ087Oz87JzMfX2Nba2tn////5
     +fnv7++6vbeVlpZwdHNPUlE3PD0uNDa1t7fo6ej////////q6uqjpKSChIVqbW1KT01gY2Tm5ueG
     iIlTV1gyNzmMj4+/wr7l5uT///9DSEhCP0FZTk9sWlt3YGF/Zmf///+YfHqqh4a4kI/RoJ/jqqrw
@@ -461,16 +458,23 @@ export const TasksSeededData: Task[] = [
     oxcHKQDC8PqfbPUGCeT1bIsrwfjoVaYeEJKttPpOloy6wevwvXrtSm6ZDA6l6PVmsBAiXwqSpl7V
     Ev+F5WfUdEJFt3iDwl6/uwAKRGQseMHSVTv+c9rL3GansfK7D6XKatRImlmtV/0T9hVJFEyWoWhI
     nzdURmgMpyKGXZqVrdaOpqgX/b4dxnH852C7Ftr9vqoqWmursmWarMGUSJxGCpBA76iwSzB8SFIU
-    VSpFUZ7nzFG+FUWl0vYIOcRxDEXKHz3/D359qYAMAAAAAMAG3Q7m5W430OIAAAAASUVORK5CYII=`,
-    etalon: '[{"type":"class","className":"FacebookDecorator","privateAttributes":[],"publicAttributes":[{"attributeName":"field","type":"type"}],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"Notify(message","returnType":"string):"}],"protectedMethods":[],"implements":[],"extends":["Notifier"]},{"type":"class","className":"Notifier","privateAttributes":[],"publicAttributes":[{"attributeName":"field","type":"type"}],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"Notify(message","returnType":"string):"}],"protectedMethods":[],"implements":[],"extends":[]},{"type":"class","className":"SkypeDecorator","privateAttributes":[],"publicAttributes":[{"attributeName":"field","type":"type"}],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"Notify(message","returnType":"string):"}],"protectedMethods":[],"implements":[],"extends":["Notifier"]},{"type":"class","className":"SMSDecorator","privateAttributes":[],"publicAttributes":[{"attributeName":"field","type":"type"}],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"Notify(message","returnType":"string):"}],"protectedMethods":[],"implements":[],"extends":["Notifier"]}]'
-  },
-  {
-    id: 4,
-    title: 'Стратегія',
-    type: 'Поведінковий',
-    level: 'Середній',
-    description: 'Визначити інтерфейс "RouteStrategy" для побудови маршруту онлайн-карт з публічним методом "BuildRoute(A: string, B: string)". Додати класи RoadStrategy та WalkingStrategy, що імплементовують ці інтерфейси',
-    image: `iVBORw0KGgoAAAANSUhEUgAAAaQAAAEsCAMAAAC7cTeyAAABGlBMVEVHcEz/////////////////
+    VSpFUZ7nzFG+FUWl0vYIOcRxDEXKHz3/D359qYAMAAAAAMAG3Q7m5W430OIAAAAASUVORK5CYII=`;
+const decoratorEtalon = `[{"type":"class","className":"FacebookDecorator","privateAttributes":[],
+    "publicAttributes":[{"attributeName":"field","type":"type"}],"protectedAttributes":[],
+    "privateMethods":[],"publicMethods":[{"methodName":"Notify(message","returnType":"string):"}],
+    "protectedMethods":[],"implements":[],"extends":["Notifier"]},{"type":"class","className":"Notifier",
+    "privateAttributes":[],"publicAttributes":[{"attributeName":"field","type":"type"}],"protectedAttributes":[],
+    "privateMethods":[],"publicMethods":[{"methodName":"Notify(message","returnType":"string):"}],
+    "protectedMethods":[],"implements":[],"extends":[]},{"type":"class","className":"SkypeDecorator","privateAttributes":[],
+    "publicAttributes":[{"attributeName":"field","type":"type"}],"protectedAttributes":[],"privateMethods":[],
+    "publicMethods":[{"methodName":"Notify(message","returnType":"string):"}],
+    "protectedMethods":[],"implements":[],"extends":["Notifier"]},{"type":"class","className":"SMSDecorator",
+    "privateAttributes":[],"publicAttributes":[{"attributeName":"field","type":"type"}],"protectedAttributes":[],
+    "privateMethods":[],"publicMethods":[{"methodName":"Notify(message","returnType":"string):"}],"protectedMethods":[],
+    "implements":[],"extends":["Notifier"]}]`;
+
+const strategyImage =
+    `iVBORw0KGgoAAAANSUhEUgAAAaQAAAEsCAMAAAC7cTeyAAABGlBMVEVHcEz/////////////////
     /f3//f3////////79fWcnp5DSEkuNDb//f2trq7o6OhgY2QxNzlTV1jm5+f//////v7x8fH8/PzH
     yMhucXLExcZOUVPNzs47QEJITU7BwsO6vLxNUVL67e325eX////46+vdpKTIYWHEWVnJZ2fZnZ3/
     //+6HR3frKz15+f//f1BRkjEU1P46ur////78fHVjIz9+fn///+7IyO/NjbBPT3DTEzRgYHx0tLE
@@ -596,15 +600,57 @@ export const TasksSeededData: Task[] = [
     1UpbBwn0/sTIcCy1jJOvar2H5Ukry7+I/2/vro0kBgIgioqZslH+mZ19ZE5tT9V7ASyoPdFfl7pb
     Ff95z2kuZjrf5pthLPxtdbcq/tV2fTFd+9lvy29VkN+qIL9VQX6rgspaFeS3KshvVZDfqiC/VUF+
     q4L8VgX5rQryWxWEX0/CSCmMZCQjGQkjpTKSkYxkJCMFMZKRSjES3f0cYZ67a77hvI4w19l8x7Ju
-    +xFk3749W8C3JwVCTOPQUOC5hGLPFtQPAAAAAAAAAAAAgC+urLrrTQFZ3wAAAABJRU5ErkJggg==`,
-    etalon: '[{"type":"class","className":"RoadStrategy","privateAttributes":[],"publicAttributes":[{"attributeName":"field","type":"type"}],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"BuildRoute(A","returnType":"string,"}],"protectedMethods":[],"implements":[],"extends":[]},{"type":"interface","interfaceName":"RouteStrategy","privateAttributes":[],"publicAttributes":[{"attributeName":"field","type":"type"}],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"BuildRoute(A","returnType":"string,"}],"protectedMethods":[],"implements":[],"extends":[]},{"type":"class","className":"WalkingStrategy","privateAttributes":[],"publicAttributes":[{"attributeName":"field","type":"type"}],"protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"BuildRoute(A","returnType":"string,"}],"protectedMethods":[],"implements":[],"extends":[]}]'
+    +xFk3749W8C3JwVCTOPQUOC5hGLPFtQPAAAAAAAAAAAAgC+urLrrTQFZ3wAAAABJRU5ErkJggg==`;
+const strategEtalon =
+    `[{"type":"class","className":"RoadStrategy","privateAttributes":[],"publicAttributes":[{"attributeName":"field","type":"type"}],
+    "protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"BuildRoute(A","returnType":"string,"}],
+    "protectedMethods":[],"implements":[],"extends":[]},{"type":"interface","interfaceName":"RouteStrategy","privateAttributes":[],
+    "publicAttributes":[{"attributeName":"field","type":"type"}],"protectedAttributes":[],"privateMethods":[],
+    "publicMethods":[{"methodName":"BuildRoute(A","returnType":"string,"}],"protectedMethods":[],"implements":[],"extends":[]},
+    {"type":"class","className":"WalkingStrategy","privateAttributes":[],"publicAttributes":[{"attributeName":"field","type":"type"}],
+    "protectedAttributes":[],"privateMethods":[],"publicMethods":[{"methodName":"BuildRoute(A","returnType":"string,"}],
+    "protectedMethods":[],"implements":[],"extends":[]}]`;
+
+export const TasksSeededData: Task[] = [
+  {
+    id: 1,
+    title: 'Фабричний метод',
+    type: 'Породжувальний',
+    level: 'Легкий',
+    description: `Визначити базовий абстрактний клас "UIElement", який містить у собі метод "CreateElement(): UIElement",
+     що перевизначається у дочірніх класах "HtmlButton" та "HtmlAnchorTag"`,
+    image: factoryMethodImage,
+    etalon: factoryMethodEtalon
+  },
+  {
+    id: 2,
+    title: 'Будівельник',
+    type: 'Породжувальний',
+    level: 'Середній',
+    description: `Визначити інтерфейс "Builder", який містить у собі методи StepA() та StepB(). Визначити класи
+     ConcreteBuilder1 та ConcreteBuilder2, що імплементовують цей інтерфейс та додатково містять приватне поле "Result"
+     з типом Product1 та Product2 відповідно`,
+    image: builderImage,
+    etalon: builderEtalon
+  },
+  {
+    id: 3,
+    title: 'Декоратор',
+    type: 'Породжувальний',
+    level: 'Високий',
+    description: `Визначити базовий декоратор "Notifier" для відправлення сповіщень, який містить у собі метод "Notify(message: string): void".
+     Також додати класи "SMSDecorator", "FacebookDecorator", "SkypeDecorator" що допомагають відправляти сповіщення через вказані сервіси`,
+    image: decoratorImage,
+    etalon: decoratorEtalon
+  },
+  {
+    id: 4,
+    title: 'Стратегія',
+    type: 'Поведінковий',
+    level: 'Середній',
+    description: `Визначити інтерфейс "RouteStrategy" для побудови маршруту онлайн-карт з публічним методом
+     "BuildRoute(A: string, B: string)". Додати класи RoadStrategy та WalkingStrategy, що імплементовують ці інтерфейси`,
+    image: strategyImage,
+    etalon: strategEtalon
   }
 ];
-
-
-
-/*
-
-[{"title":"Фабричний метод","type":"Породжувальний","level":"Легкий","description":"Визначити базовий абстрактний клас \"UIElement\", який містить у собі метод \"CreateElement(): UIElement\", що перевизначається у дочірніх класах \"HtmlButton\" та \"HtmlAnchorTag\"","image":null,"id":1,"etalon":"[{\"type\":\"class\",\"className\":\"<i>UIElement</i>\",\"privateAttributes\":[],\"publicAttributes\":[],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"CreateElement()\",\"returnType\":\"UIElement\"}],\"protectedMethods\":[],\"implements\":[],\"extends\":[]},{\"type\":\"class\",\"className\":\"HtmlAnchorTag\",\"privateAttributes\":[],\"publicAttributes\":[],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"CreateElement()\",\"returnType\":\"UIElement\"}],\"protectedMethods\":[],\"implements\":[],\"extends\":[\"<i>UIElement</i>\"]},{\"type\":\"class\",\"className\":\"HtmlButton\",\"privateAttributes\":[],\"publicAttributes\":[],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"CreateElement()\",\"returnType\":\"UIElement\"}],\"protectedMethods\":[],\"implements\":[],\"extends\":[\"<i>UIElement</i>\"]}]"},{"title":"Будівельник","type":"Породжувальний","level":"Середній","description":"Визначити інтерфейс \"Builder\", який містить у собі методи StepA() та StepB(). Визначити класи ConcreteBuilder1 та ConcreteBuilder2, що імплементовують цей інтерфейс та додатково містять приватне поле \"Result\" з типом Product1 та Product2 відповідно","image":null,"id":2,"etalon":"[{\"type\":\"interface\",\"interfaceName\":\"Builder\",\"privateAttributes\":[],\"publicAttributes\":[],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"StepA()\",\"returnType\":\"void\"}],\"protectedMethods\":[],\"implements\":[],\"extends\":[]},{\"type\":\"class\",\"className\":\"ConcreteBuilder1\",\"privateAttributes\":[{\"attributeName\":\"result\",\"type\":\"Product1\"}],\"publicAttributes\":[],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"StepA()\",\"returnType\":\"void\"}],\"protectedMethods\":[],\"implements\":[],\"extends\":[]},{\"type\":\"class\",\"className\":\"ConcreteBuilder2\",\"privateAttributes\":[{\"attributeName\":\"result\",\"type\":\"Product2\"}],\"publicAttributes\":[],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"StepA()\",\"returnType\":\"void\"}],\"protectedMethods\":[],\"implements\":[\"Builder\",\"Builder\"],\"extends\":[]}]"},{"title":"Декоратор","type":"Породжувальний","level":"Високий","description":"Визначити базовий декоратор \"Notifier\" для відправлення сповіщень, який містить у собі метод \"Notify(message: string): void\". Також додати класи \"SMSDecorator\", \"FacebookDecorator\", \"SkypeDecorator\" що допомагають відправляти сповіщення через вказані сервіси","image":null,"id":3,"etalon":"[{\"type\":\"class\",\"className\":\"FacebookDecorator\",\"privateAttributes\":[],\"publicAttributes\":[{\"attributeName\":\"field\",\"type\":\"type\"}],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"Notify(message\",\"returnType\":\"string):\"}],\"protectedMethods\":[],\"implements\":[],\"extends\":[\"Notifier\"]},{\"type\":\"class\",\"className\":\"Notifier\",\"privateAttributes\":[],\"publicAttributes\":[{\"attributeName\":\"field\",\"type\":\"type\"}],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"Notify(message\",\"returnType\":\"string):\"}],\"protectedMethods\":[],\"implements\":[],\"extends\":[]},{\"type\":\"class\",\"className\":\"SkypeDecorator\",\"privateAttributes\":[],\"publicAttributes\":[{\"attributeName\":\"field\",\"type\":\"type\"}],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"Notify(message\",\"returnType\":\"string):\"}],\"protectedMethods\":[],\"implements\":[],\"extends\":[\"Notifier\"]},{\"type\":\"class\",\"className\":\"SMSDecorator\",\"privateAttributes\":[],\"publicAttributes\":[{\"attributeName\":\"field\",\"type\":\"type\"}],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"Notify(message\",\"returnType\":\"string):\"}],\"protectedMethods\":[],\"implements\":[],\"extends\":[\"Notifier\"]}]"},{"title":"Стратегія","type":"Поведінковий","level":"Середній","description":"Визначити інтерфейс \"RouteStrategy\" для побудови маршруту онлайн-карт з публічним методом \"BuildRoute(A: string, B: string)\". Додати класи RoadStrategy та WalkingStrategy, що імплементовують ці інтерфейси","image":null,"id":4,"etalon":"[{\"type\":\"class\",\"className\":\"RoadStrategy\",\"privateAttributes\":[],\"publicAttributes\":[{\"attributeName\":\"field\",\"type\":\"type\"}],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"BuildRoute(A\",\"returnType\":\"string,\"}],\"protectedMethods\":[],\"implements\":[],\"extends\":[]},{\"type\":\"interface\",\"interfaceName\":\"RouteStrategy\",\"privateAttributes\":[],\"publicAttributes\":[{\"attributeName\":\"field\",\"type\":\"type\"}],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"BuildRoute(A\",\"returnType\":\"string,\"}],\"protectedMethods\":[],\"implements\":[],\"extends\":[]},{\"type\":\"class\",\"className\":\"WalkingStrategy\",\"privateAttributes\":[],\"publicAttributes\":[{\"attributeName\":\"field\",\"type\":\"type\"}],\"protectedAttributes\":[],\"privateMethods\":[],\"publicMethods\":[{\"methodName\":\"BuildRoute(A\",\"returnType\":\"string,\"}],\"protectedMethods\":[],\"implements\":[],\"extends\":[]}]"}]
-
-*/
